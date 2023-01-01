@@ -7,6 +7,7 @@ import { CalendarProvider } from './CalendarProvider';
 import './CalendarPage.scss';
 import './variables.scss';
 import { CalendarNavigator } from './CalendarNavigator';
+import { MainLayout } from '@/layout/MainLayout';
 
 export type CalendarPageProps = {
   //
@@ -14,13 +15,13 @@ export type CalendarPageProps = {
 
 const CalendarPage = ({}: CalendarPageProps) => {
   return (
-    <CalendarProvider>
-      <div className="calendar-page">
+    <MainLayout className="calendar-page">
+      <CalendarProvider>
         <CalendarNavigator />
         <CalendarHeader />
         <CalendarBody />
-      </div>
-    </CalendarProvider>
+      </CalendarProvider>
+    </MainLayout>
   );
 };
 

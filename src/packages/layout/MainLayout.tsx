@@ -1,12 +1,14 @@
-import { Children } from '@/common/types';
+import { Children, ClassName } from '@/common/types';
+import clsx from 'clsx';
 import React from 'react';
 
 import './MainLayout.scss';
 
-export type MainLayoutProps = Children & {
-  //
-};
+export type MainLayoutProps = Children &
+  ClassName & {
+    //
+  };
 
-export const MainLayout = ({ children }: MainLayoutProps) => {
-  return <main className="main-layout">{children}</main>;
+export const MainLayout = ({ children, className }: MainLayoutProps) => {
+  return <main className={clsx('main-layout', className)}>{children}</main>;
 };

@@ -1,4 +1,16 @@
 .calendar-body {
+  flex-grow: 1;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  
+  & {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
   &__row {
     margin-left: var(--calendar-time-container-width);
     display: flex;
@@ -19,7 +31,7 @@
     position: absolute;
     top: 0;
     left: -10px;
-    transform: translate(-100%, -50%);
+    transform: translate(-100%);
     font-size: 12px;
 
     &--primary {

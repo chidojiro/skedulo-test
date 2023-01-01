@@ -21,7 +21,7 @@ export const CalendarBody = ({}: CalendarBodyProps) => {
   const { viewingWeek } = useCalendarContext();
 
   return (
-    <div>
+    <div className="calendar-body">
       {range(timeMarkCount).map((timeOffset) => {
         const timeMark = viewingWeek.minute(timeOffset * TIME_GAP);
 
