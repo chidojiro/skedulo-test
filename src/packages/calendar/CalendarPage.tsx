@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { CalendarHeader } from './CalendarHeader';
+import { CalendarBody } from './CalendarBody';
 import { CalendarProvider } from './CalendarProvider';
 
 import './CalendarPage.scss';
@@ -15,6 +16,7 @@ const CalendarPage = ({}: CalendarPageProps) => {
     <CalendarProvider>
       <div className="calendar-page">
         <CalendarHeader />
+        <CalendarBody />
       </div>
     </CalendarProvider>
   );

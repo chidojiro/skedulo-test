@@ -1,1 +1,1 @@
-export const CALENDAR_CELL_HEIGHT = 48;
+export const CALENDAR_ROW_HEIGHT = 48;

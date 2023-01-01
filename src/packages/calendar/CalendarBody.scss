@@ -1,0 +1,30 @@
+.calendar-body {
+  &__row {
+    margin-left: var(--calendar-time-container-width);
+    display: flex;
+    position: relative;
+
+    .calendar-body__cell {
+      border: 1px solid var(--gray-300);
+      border-top: none;
+      flex: 1;
+
+      &:not(:last-of-type) {
+        border-right: none;
+      }
+    }
+  }
+
+  &__time-mark {
+    position: absolute;
+    top: 0;
+    left: -10px;
+    transform: translate(-100%, -50%);
+    font-size: 12px;
+
+    &--primary {
+      font-weight: bold;
+      font-size: 14px;
+    }
+  }
+}
