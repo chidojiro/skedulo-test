@@ -65,3 +65,11 @@ table {
 html body {
   box-sizing: border-box;
 }
+
+button {
+	outline: none;
+	background-color: transparent;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+}
