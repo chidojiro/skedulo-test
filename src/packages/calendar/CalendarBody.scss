@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 .calendar-body {
   flex-grow: 1;
   overflow: auto;
@@ -12,7 +14,7 @@
   }
 
   &__row {
-    margin-left: var(--calendar-time-container-width);
+    margin-left: $calendar-time-container-width;
     display: flex;
     position: relative;
 
@@ -20,6 +22,14 @@
       border: 1px solid var(--gray-300);
       border-top: none;
       flex: 1;
+
+      &:nth-of-type(odd) {
+        background-color: var(--gray-50);
+      }
+
+      &.calendar-body__cell--disabled {
+        background-color: var(--gray-700);
+      }
 
       &:not(:last-of-type) {
         border-right: none;

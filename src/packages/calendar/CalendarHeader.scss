@@ -1,6 +1,8 @@
+@import './variables.scss';
+
 .calendar-header {
   display: flex;
-  margin-left: var(--calendar-time-container-width);
+  margin-left: $calendar-time-container-width;
   
   &__cell {
     flex: 1;

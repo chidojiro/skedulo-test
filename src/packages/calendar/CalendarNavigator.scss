@@ -1,8 +1,10 @@
+@import './variables.scss';
+
 .calendar-navigator {
   display: flex;
   align-items: center;
   gap: 20px;
-  margin-left: var(--calendar-time-container-width);
+  margin-left: $calendar-time-container-width;
   margin-bottom: 12px;
 
   &__chevrons {
