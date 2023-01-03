@@ -31,8 +31,8 @@ export const CalendarBody = ({}: CalendarBodyProps) => {
                 key={startTime.toString()}
                 startTime={startTime}
                 endTime={endTime}
-                onClick={() => setSelectedRange(`default-${index}`)}
-                selected={selectedRange === `default-${index}`}
+                onClick={() => setSelectedRange(`default-${day}-${index}`)}
+                selected={selectedRange === `default-${day}-${index}`}
               />
             ))}
             {(extraAvailability ?? []).map(({ startTime, endTime, startDate, endDate }, index) => {
@@ -45,8 +45,8 @@ export const CalendarBody = ({}: CalendarBodyProps) => {
                   key={startTime.toString()}
                   startTime={mergeTimeIntoDay(dayjs(startDate), startTime)}
                   endTime={mergeTimeIntoDay(dayjs(endDate), endTime)}
-                  onClick={() => setSelectedRange(`extra-${index}`)}
-                  selected={selectedRange === `extra-${index}`}
+                  onClick={() => setSelectedRange(`extra-${day}-${index}`)}
+                  selected={selectedRange === `extra-${day}-${index}`}
                   isExtra
                 />
               );
