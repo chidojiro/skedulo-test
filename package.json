@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.6",
     "@react-hook/resize-observer": "^1.2.6",
     "clsx": "^1.2.1",
     "dayjs": "^1.11.7",

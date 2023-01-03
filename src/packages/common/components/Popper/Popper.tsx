@@ -135,6 +135,7 @@ export const Popper = ({
       ref={(element) => setMainContentElement(element)}
       style={{
         ...styles.popper,
+        zIndex: 999,
       }}
       {...attributes.popper}
     >

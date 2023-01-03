@@ -18,6 +18,10 @@
     &:not(:last-of-type)  {
       border-right: none;
     }
+
+    &:nth-of-type(even) {
+      background-color: var(--gray-50);
+    }
   }
 
   &__cell-day {

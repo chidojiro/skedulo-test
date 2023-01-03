@@ -23,7 +23,7 @@
       border-top: none;
       flex: 1;
 
-      &:nth-of-type(odd) {
+      &:nth-of-type(even) {
         background-color: var(--gray-50);
       }
 

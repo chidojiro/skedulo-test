@@ -18,3 +18,5 @@ export type Option<T = string, P = React.ReactNode> = {
   value: T;
   label: P;
 };
+
+export type Merge<T, U> = Omit<T, keyof U> & U;
