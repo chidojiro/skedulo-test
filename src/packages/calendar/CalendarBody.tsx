@@ -6,6 +6,7 @@ import { CALENDAR_ROW_HEIGHT, TIME_GAP } from './constants';
 
 import './CalendarBody.scss';
 import { trimTime } from '@/common/utils';
+import { CalendarTimeRange } from './CalendarTimeRange';
 
 export type CalendarBodyProps = {
   //
@@ -22,18 +23,11 @@ export const CalendarBody = ({}: CalendarBodyProps) => {
         {range(7).map((day) => (
           <div key={day} className="calendar-body__available-time-range-container">
             {availableTimeRangesByDay[day].map(({ startTime, endTime }) => (
-              <div
+              <CalendarTimeRange
                 key={startTime.toString()}
-                className="calendar-body__available-time-range"
-                style={{
-                  top:
-                    (startTime.diff(trimTime(startTime), 'minute') / TIME_GAP) *
-                    CALENDAR_ROW_HEIGHT,
-                  height: (endTime.diff(startTime, 'minute') / TIME_GAP) * CALENDAR_ROW_HEIGHT,
-                }}
-              >
-                {startTime.format('hh:mm A')} - {endTime.format('hh:mm A')}
-              </div>
+                startTime={startTime}
+                endTime={endTime}
+              />
             ))}
           </div>
         ))}
