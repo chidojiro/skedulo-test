@@ -1,4 +1,4 @@
-import { Popper } from '@/common/components';
+import { useDisclosure } from '@/common/hooks';
 import { Children, ClassName } from '@/common/types';
 import clsx from 'clsx';
 import { Dayjs } from 'dayjs';
@@ -12,13 +12,19 @@ export type CalendarCellProps = ClassName &
 
 export const CalendarCell = React.memo(
   ({ className, dateMark, ...restProps }: CalendarCellProps) => {
+    const popperDisclosure = useDisclosure();
+
     return (
       <CalendarExtraAvailableTimePopper
+        dateMark={dateMark}
+        open={popperDisclosure.isOpen}
+        onClose={popperDisclosure.close}
         trigger={
           <button
             className={clsx('calendar-cell', className)}
             {...restProps}
             data-from={dateMark.toDate()}
+            onClick={popperDisclosure.toggle}
           ></button>
         }
       />

@@ -6,26 +6,51 @@ import { CALENDAR_ROW_HEIGHT, timeSlotCount, TIME_GAP } from './constants';
 
 import './CalendarBody.scss';
 import { CalendarTimeRange } from './CalendarTimeRange';
+import { useExtraAvailability } from './useExtraAvailability';
+import { mergeTimeIntoDay } from './utils';
+import dayjs from 'dayjs';
+import React from 'react';
 
 export type CalendarBodyProps = {
   //
 };
 
 export const CalendarBody = ({}: CalendarBodyProps) => {
+  const [selectedRange, setSelectedRange] = React.useState<string>();
   const { viewingWeek, availableTimeRangesByDay } = useCalendarContext();
+
+  const { data: extraAvailability } = useExtraAvailability();
 
   return (
     <div className="calendar-body">
       <div className="calendar-body__available-time-ranges-row">
         {range(7).map((day) => (
           <div key={day} className="calendar-body__available-time-range-container">
-            {availableTimeRangesByDay[day].map(({ startTime, endTime }) => (
+            {availableTimeRangesByDay[day].map(({ startTime, endTime }, index) => (
               <CalendarTimeRange
                 key={startTime.toString()}
                 startTime={startTime}
                 endTime={endTime}
+                onClick={() => setSelectedRange(`default-${index}`)}
+                selected={selectedRange === `default-${index}`}
               />
             ))}
+            {(extraAvailability ?? []).map(({ startTime, endTime, startDate, endDate }, index) => {
+              const isSameDay = viewingWeek.day(day).format('YYYY-MM-DD') !== startDate;
+
+              if (isSameDay) return null;
+
+              return (
+                <CalendarTimeRange
+                  key={startTime.toString()}
+                  startTime={mergeTimeIntoDay(dayjs(startDate), startTime)}
+                  endTime={mergeTimeIntoDay(dayjs(endDate), endTime)}
+                  onClick={() => setSelectedRange(`extra-${index}`)}
+                  selected={selectedRange === `extra-${index}`}
+                  isExtra
+                />
+              );
+            })}
           </div>
         ))}
       </div>
@@ -48,7 +73,7 @@ export const CalendarBody = ({}: CalendarBodyProps) => {
                 {timeMark.format('hh:mm A')}
               </div>
               {range(7).map((dateOffset) => {
-                const dateMark = viewingWeek.date(dateOffset).minute(timeOffset * TIME_GAP);
+                const dateMark = viewingWeek.add(dateOffset, 'day').minute(timeOffset * TIME_GAP);
 
                 return (
                   <CalendarCell
