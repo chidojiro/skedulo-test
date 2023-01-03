@@ -1,7 +1,9 @@
+import { Popper } from '@/common/components';
 import { Children, ClassName } from '@/common/types';
 import clsx from 'clsx';
 import { Dayjs } from 'dayjs';
 import React from 'react';
+import { CalendarExtraAvailableTimePopper } from './CalendarExtraAvailableTimePopper';
 
 export type CalendarCellProps = ClassName &
   Children & {
@@ -11,11 +13,15 @@ export type CalendarCellProps = ClassName &
 export const CalendarCell = React.memo(
   ({ className, dateMark, ...restProps }: CalendarCellProps) => {
     return (
-      <div
-        className={clsx('calendar-cell', className)}
-        {...restProps}
-        data-from={dateMark.toDate()}
-      ></div>
+      <CalendarExtraAvailableTimePopper
+        trigger={
+          <button
+            className={clsx('calendar-cell', className)}
+            {...restProps}
+            data-from={dateMark.toDate()}
+          ></button>
+        }
+      />
     );
   },
 );

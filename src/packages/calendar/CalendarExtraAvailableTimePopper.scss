@@ -1,0 +1,36 @@
+.calendar-extra-available-time-popper {
+  background-color: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0px 24px 38px 3px rgb(0 0 0 / 14%), 0px 9px 46px 8px rgb(0 0 0 / 12%), 0px 11px 15px -7px rgb(0 0 0 / 20%);
+
+  &__title {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  &__time-label {
+    display: inline-block;
+    width: 80px;
+  }
+
+  &__time-select {
+    display: inline-block;
+    width: 100px;
+  }
+
+  &__times {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__save-button {
+    display: block;
+    font-weight: bold;
+    margin-left: auto;
+    margin-top: 12px;
+    font-size: 16px;
+  }
+}

@@ -2,17 +2,14 @@ import clsx from 'clsx';
 import { range } from 'lodash-es';
 import { CalendarCell } from './CalendarCell';
 import { useCalendarContext } from './CalendarProvider';
-import { CALENDAR_ROW_HEIGHT, TIME_GAP } from './constants';
+import { CALENDAR_ROW_HEIGHT, timeSlotCount, TIME_GAP } from './constants';
 
 import './CalendarBody.scss';
-import { trimTime } from '@/common/utils';
 import { CalendarTimeRange } from './CalendarTimeRange';
 
 export type CalendarBodyProps = {
   //
 };
-
-const timeMarkCount = 24 * (60 / TIME_GAP);
 
 export const CalendarBody = ({}: CalendarBodyProps) => {
   const { viewingWeek, availableTimeRangesByDay } = useCalendarContext();
@@ -33,7 +30,7 @@ export const CalendarBody = ({}: CalendarBodyProps) => {
         ))}
       </div>
       <div>
-        {range(timeMarkCount).map((timeOffset) => {
+        {range(timeSlotCount).map((timeOffset) => {
           const timeMark = viewingWeek.minute(timeOffset * TIME_GAP);
 
           return (
