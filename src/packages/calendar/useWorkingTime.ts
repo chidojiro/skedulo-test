@@ -1,6 +1,6 @@
 import workingTime from './mockWorkingTime.json';
-import { WorkingTime } from './types';
+import { TimeRange } from './types';
 
 export const useWorkingTime = () => {
-  return { workingTime: workingTime as Record<string, WorkingTime> };
+  return { workingTime: workingTime as Record<string, TimeRange> };
 };

@@ -49,4 +49,27 @@
       font-size: 14px;
     }
   }
+
+  &__available-time-ranges-row {
+    display: flex;
+    margin-left: $calendar-time-container-width;
+  }
+
+  &__available-time-range-container {
+    position: relative;
+    z-index: 10;
+    flex-grow: 1;
+  }
+
+  &__available-time-range {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    max-width: 90%;
+    background-color: var(--blue-500);
+    border-radius: 8px;
+    color: white;
+    padding: 8px;
+    font-size: 12px;
+  }
 }
